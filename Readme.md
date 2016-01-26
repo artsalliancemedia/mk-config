@@ -10,6 +10,9 @@ Quick start
 -----------
 ```bash
 npm install -g github:artsalliancemedia/mk-config
+# Use this if SSH is not available on your network:
+#npm install -g https://github.com/artsalliancemedia/mk-config/archive/0.0.0.tar.gz
+
 mkconf --help
 # Usage: node mkconf
 #
