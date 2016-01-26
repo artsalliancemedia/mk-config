@@ -1,0 +1,29 @@
+{
+  "name": "mkconf",
+  "version": "0.0.0",
+  "description": "Generate configuration files dynamically",
+  "author": "Stefano Pogliani <stefano.pogliani@artsalliancemedia.com",
+
+  "bin": {
+    "mkconf": "./bin/mkconf"
+  },
+
+  "main": "lib/mkconf.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artsalliancemedia/mk-config.git"
+  },
+
+  "keywords": [
+    "configuration",
+    "handlebars",
+    "template"
+  ],
+
+  "dependencies": {
+    "handlebars": "~4.0.5",
+    "node-getopt": "~0.2.3"
+  },
+
+  "license": "MIT"
+}

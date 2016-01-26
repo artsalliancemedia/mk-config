@@ -1,0 +1,42 @@
+#!/bin/env node
+
+// Build CLI parser.
+var getopt = require("node-getopt");
+var parser = getopt.create([
+  ["h", "help", "display this help"],
+
+  ["e", "env-map=FILE", "JSON map from environment variables to template variables"],
+  ["d", "defaults=FILE", "JSON file with the default data to pass to the template"],
+
+  ["i", "input=FILE", "Read the template from FILE, defaults to stdin"],
+  ["o", "output=FILE", "Write the rendered data to FILE, defaults to stdout"]
+
+]).bindHelp();
+
+
+// Parse options.
+var opts = parser.parseSystem();
+var options = {
+  "env-map":  opts.options["env-map"],
+  "defaults": opts.options.defaults,
+  "input":  opts.options.input,
+
+  "output": opts.options.output || "-"
+}
+
+if (!options.defaults) {
+  console.error("Missing required --defaults option.");
+  process.exit(1)
+}
+if (!options["env-map"]) {
+  console.error("Missing required --env-map option.");
+  process.exit(1)
+}
+if (!options.input) {
+  console.error("Missing required --input option.");
+  process.exit(1)
+}
+
+var MkConf = require("../lib/mkconf");
+var mkconf = new MkConf(options);
+mkconf.make();
